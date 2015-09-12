@@ -1,0 +1,26 @@
+﻿@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>@ViewBag.Title - SimpleBlog</title>
+	</head>
+<body>
+<header>
+	<h1><a href="@Url.RouteUrl("home")">Simple Blog</a>
+	</h1>
+	<a href="@Url.RouteUrl("login")">Login</a>
+</header>
+
+@RenderBody()
+
+<footer>
+	<p>&copy; @DateTime.UtcNow.Year - Jordan Taylor</p>
+</footer>
+	@RenderSection( "Scripts", false)
+	
+</body>
+
+</html>

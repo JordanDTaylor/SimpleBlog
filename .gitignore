@@ -1,0 +1,10 @@
+bin
+*.suo
+*.user
+
+[Dd]ebug/
+[Rr]elease/
+*.obj
+*.pdb
+_ReSharper*
+Desktop.ini

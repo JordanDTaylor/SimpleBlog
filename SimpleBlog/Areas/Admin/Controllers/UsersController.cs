@@ -18,5 +18,70 @@ namespace SimpleBlog.Areas.Admin.Controllers
                 Users = Database.Session.Query<User>().ToList()
             });
         }
+
+        public ActionResult New()
+        {
+            return View(new UsersNew
+            {
+
+            });
+        }
+
+        [HttpPost]
+        public ActionResult New(UsersNew form)
+        {
+            if(Database.Session.Query<User>().Any(u => u.Username == form.Username))
+                ModelState.AddModelError("Username", "Username must be unique");
+
+            if(ModelState.IsValid)
+                return View(form);
+
+            var user = new User
+            {
+                Email = form.Email,
+                Username = form.Username,
+                PasswordHash = ""
+            };
+
+            user.SetPassword(form.Password);
+
+            Database.Session.Save(user);
+
+            return RedirectToAction("index");
+
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var user = Database.Session.Load<User>(id);
+            if (user == null)
+                return HttpNotFound();
+
+            return View(new UsersEdit
+            {
+                Username = user.Username,
+                Email = user.Email
+
+            });
+        }
+
+        [HttpPost]
+        public ActionResult Edit(int id, UsersEdit form)
+        {
+            var user = Database.Session.Load<User>(id);
+            if (user == null)
+                return HttpNotFound();
+            if(Database.Session.Query<User>().Any(u=>u.Username == form.Username && u.Id != id))
+                ModelState.AddModelError("Username", "Username must be unique");
+
+            if (!ModelState.IsValid)
+                return View(form);
+
+            user.Username = form.Username;
+            user.Email = form.Email;
+            Database.Session.Update(user);
+
+            return RedirectToAction("index");
+        }
     }
 }

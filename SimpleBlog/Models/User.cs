@@ -1,4 +1,5 @@
-﻿using NHibernate.Mapping.ByCode;
+﻿using System.Collections.Generic;
+using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
 namespace SimpleBlog.Models
@@ -20,6 +21,8 @@ namespace SimpleBlog.Models
         public virtual string Username { get; set; }
         public virtual string Email { get; set; }
         public virtual string PasswordHash { get; set; }
+
+        public virtual IList<Role> Roles { get; set; } = new List<Role>();
 
         public virtual void SetPassword(string password)
         {
@@ -49,6 +52,12 @@ namespace SimpleBlog.Models
                 mapper.NotNullable(true);
 
             });
+
+            Bag(user => user.Roles, junction =>
+            {
+                junction.Table("role_users");
+                junction.Key(k => k.Column("user_id"));
+            }, role => role.ManyToMany(k => k.Column("role_id")));
         }
     }
 }

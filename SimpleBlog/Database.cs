@@ -27,6 +27,7 @@ namespace SimpleBlog
             //add mappings
             var mapper = new ModelMapper();
             mapper.AddMapping<UserMap>();
+            mapper.AddMapping<RoleMap>();
 
             config.AddMapping(mapper.CompileMappingForAllExplicitlyAddedEntities());
 

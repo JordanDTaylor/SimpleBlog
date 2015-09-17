@@ -1,4 +1,6 @@
-﻿namespace SimpleBlog.Infrastructure 
+﻿using System.Linq;
+
+namespace SimpleBlog.Infrastructure 
 {
     public class RoleProvider : System.Web.Security.RoleProvider
     {
@@ -6,10 +8,12 @@
         //Authorization - What is this authenticated user authorized to do? 
         public override string[] GetRolesForUser(string username)
         {
-            if(username.ToLower() == "jordan")
-                return new[] { "admin" };
+            return Auth.User.Roles.Select(role => role.Name).ToArray();
 
-            return new string[] {};
+//            if(username.ToLower() == "jordan")
+//                return new[] { "admin" };
+//
+//            return new string[] {};
         }
 
         //None of the below are implemented yet.

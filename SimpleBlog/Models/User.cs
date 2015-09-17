@@ -1,4 +1,5 @@
-﻿using NHibernate.Mapping.ByCode;
+﻿using System.EnterpriseServices;
+using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
 namespace SimpleBlog.Models
@@ -6,6 +7,16 @@ namespace SimpleBlog.Models
     //All properties and methods of a class that maps to nhibernate must be virtual.
     public class User
     {
+        private const int WorkFactor = 13;
+
+        /// <summary>
+        /// Used to prevent time attack to find if username is already registered.
+        /// </summary>
+        public static void FakeHash()
+        {
+            BCrypt.Net.BCrypt.HashPassword("", WorkFactor);
+        }
+
         public virtual int Id { get; set; }
         public virtual string Username { get; set; }
         public virtual string Email { get; set; }
@@ -13,7 +24,7 @@ namespace SimpleBlog.Models
 
         public virtual void SetPassword(string password)
         {
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(password, 13);
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(password, WorkFactor);
         }
 
         public virtual bool CheckPassword(string password)
@@ -37,6 +48,7 @@ namespace SimpleBlog.Models
             {
                 mapper.Column("password_hash");
                 mapper.NotNullable(true);
+
             });
         }
     }

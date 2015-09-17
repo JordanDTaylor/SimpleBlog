@@ -20,7 +20,7 @@ namespace SimpleBlog.Models
 
         public virtual bool IsDeleted => DeletedAt != null;
 
-        public virtual IList<Post> Tags { get; set; }
+        public virtual IList<Tag> Tags { get; set; }
 
     }
 

@@ -163,6 +163,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Content Include="Areas\Admin\Scripts\Forms.js" />
+    <Compile Include="Areas\Admin\ViewModels\Posts.cs" />
     <Compile Include="Areas\Admin\ViewModels\Users.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
@@ -172,8 +173,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
+    <Compile Include="Infrastructure\PagedData.cs" />
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Infrastructure\TransactionFilter.cs" />
+    <Compile Include="Migrations\_003_AddContentToPosts.cs" />
     <Compile Include="Migrations\_002_PostsAndTags.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Role.cs" />

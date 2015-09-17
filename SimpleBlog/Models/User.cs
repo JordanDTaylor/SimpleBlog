@@ -1,5 +1,4 @@
-﻿using System.EnterpriseServices;
-using NHibernate.Mapping.ByCode;
+﻿using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
 namespace SimpleBlog.Models

@@ -174,7 +174,10 @@
     <Compile Include="Database.cs" />
     <Compile Include="Infrastructure\RoleProvider.cs" />
     <Compile Include="Infrastructure\TransactionFilter.cs" />
+    <Compile Include="Migrations\_002_PostsAndTags.cs" />
+    <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Infrastructure\SelectedTabAttribute.cs" />
     <Compile Include="Migrations\_001_UsersAndRoles.cs" />

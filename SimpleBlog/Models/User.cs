@@ -13,7 +13,12 @@ namespace SimpleBlog.Models
 
         public virtual void SetPassword(string password)
         {
-            PasswordHash = "IGNORE ME";
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(password, 13);
+        }
+
+        public virtual bool CheckPassword(string password)
+        {
+            return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
         }
     }
     

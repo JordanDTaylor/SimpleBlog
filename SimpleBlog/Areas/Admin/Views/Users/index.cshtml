@@ -31,11 +31,11 @@
                         <i class="glyphicon glyphicon-edit"></i>
                         EDIT
                     </a>
-                    <a href="#" class="btn btn-xs btn-default">
+                    <a href="@Url.Action("resetpassword", new {user.Id})" class="btn btn-xs btn-default">
                         <i class="glyphicon glyphicon-lock"></i>
                         Reset Password
                     </a>
-                    <a href="#" class="btn btn-xs btn-danger">
+                    <a href="@Url.Action("delete", new {user.Id})" class="btn btn-xs btn-danger" data-post="Are you sure you want to delete @user.Username?">
                         <i class="glyphicon glyphicon-remove"></i>
                         Delete
                     </a>

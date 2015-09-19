@@ -126,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Scripts\PostEditor.js" />
-    <Content Include="Content\Site.css" />
     <Content Include="Content\Styles\bootstrap.css" />
     <Content Include="Content\Styles\Admin.css" />
     <Content Include="Content\Styles\Site.css" />
@@ -393,6 +392,8 @@
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\frontend.js" />
+    <Content Include="Scripts\jquery.timeago.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -411,6 +412,7 @@
     <Compile Include="Areas\Admin\ViewModels\Users.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Auth.cs" />
     <Compile Include="Global.asax.cs">
@@ -431,6 +433,7 @@
     <Compile Include="Migrations\_001_UsersAndRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Tools\DeployDb-Dev.bat" />
+    <Compile Include="ViewModels\Layout.cs" />
     <Compile Include="ViewModels\Posts.cs" />
     <Compile Include="ViewModels\Auth.cs" />
   </ItemGroup>
@@ -446,6 +449,7 @@
     <Content Include="Views\Posts\_Post.cshtml" />
     <Content Include="Views\Posts\Show.cshtml" />
     <Content Include="Views\Posts\Tag.cshtml" />
+    <Content Include="Views\Layout\Sidebar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

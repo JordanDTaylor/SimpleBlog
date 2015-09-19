@@ -7,45 +7,36 @@
 <html>
 
 <head>
+    <meta charset="utf-8"/>
     <title>@ViewBag.Title - SimpleBlog</title>
     @Styles.Render("~/styles")
 </head>
 
 <body>
+<div class="site-header">
+    <header class="container">
+        <h1 class="page-header">
+            <a href="@Url.RouteUrl("Home")">Awesome Stuff!</a>
+            <small>a simple blog powered by ASP.net MVC</small>
+        </h1>
+    </header>
+</div>
 
-<header>
-    <h1>
-        <a href="@Url.RouteUrl("home")">Simple Blog</a>
-        <i class="glyphicon-bell"></i>
-    </h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            @RenderBody()
+        </div>
+        <div class="col-lg-4 sidebar">
+            @Html.Action("Sidebar", "Layout")
+        </div>
+    </div>
+    <footer>
+        &copy; @DateTime.UtcNow.Year
+    </footer>
+</div>
 
-    @*    if  logged in, show the logout *@
-    @if (User.Identity.IsAuthenticated)
-    {
-        <p>Welcome back, @User.Identity.Name</p>
-        <a href="@Url.RouteUrl("logout")">logout</a>
-
-        if (User.IsInRole("admin"))
-        {
-            <a href="@Url.Action("index", "Posts", new {area = "admin"})">View posts in admin</a>
-        }
-    }
-    else
-    {
-        <a href="@Url.RouteUrl("login")">Login</a>
-    }
-
-</header>
-
-@RenderBody()
-
-<footer>
-    <p>&copy; @DateTime.UtcNow.Year - Jordan Taylor</p>
-</footer>
-
-@Scripts.Render("~/scripts")
-@RenderSection("Scripts", false)
-
+    @Scripts.Render("~/scripts")
+    @RenderSection("Scripts", false)
 </body>
-
 </html>

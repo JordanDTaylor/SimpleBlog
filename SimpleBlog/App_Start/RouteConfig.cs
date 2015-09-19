@@ -26,6 +26,7 @@ namespace SimpleBlog
             //empty route "" means the one that shows up when nothing is specified
             routes.MapRoute("Home", "", new { controller = "Posts", action = "index" }, namespaces);
 
+            routes.MapRoute("Sidebar", "", new { controller = "Layout", action = "Sidebar" }, namespaces);
         }
     }
 }

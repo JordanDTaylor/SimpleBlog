@@ -189,6 +189,7 @@
     <Compile Include="Migrations\_001_UsersAndRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Tools\DeployDb-Dev.bat" />
+    <Compile Include="ViewModels\Posts.cs" />
     <Compile Include="ViewModels\Auth.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +200,10 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Posts\_Posts.cshtml" />
+    <Content Include="Views\Posts\_Post.cshtml" />
+    <Content Include="Views\Posts\Show.cshtml" />
+    <Content Include="Views\Posts\Tag.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -15,16 +15,28 @@ namespace SimpleBlog.Areas.Admin.Controllers
     public class PostsController : Controller
     {
 
-        private const int PostsPerPage = 5;
+        private const int PostsPerPage = 10;
 
         public ActionResult Index(int page = 1)
         {
             var totalPostsCount = Database.Session.Query<Post>().Count();
 
-            var currentPostPage = Database.Session.Query<Post>()
-                .OrderByDescending(post => post.CreatedAt)
+            //broke up queries to eliminate Select N+1 trouble
+
+            var baseQuery = Database.Session.Query<Post>().OrderByDescending(post => post.CreatedAt);
+
+            //pagination and filtering
+            var postIds = baseQuery
                 .Skip((page - 1)*PostsPerPage)
                 .Take(PostsPerPage)
+                .Select(p=>p.Id)
+                .ToArray();
+
+            //post data retrieval
+            var currentPostPage = baseQuery
+                .Where(post=>postIds.Contains(post.Id))
+                .FetchMany(f=>f.Tags)
+                .Fetch(f=>f.User)
                 .ToList();
 
             return View(new PostsIndex

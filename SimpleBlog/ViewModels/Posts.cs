@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using SimpleBlog.Infrastructure;
 using SimpleBlog.Models;
 
-
-namespace SimpleBlog.Areas.Admin.ViewModels
+namespace SimpleBlog.ViewModels
 {
     public class TagCheckbox
     {
@@ -32,7 +32,19 @@ namespace SimpleBlog.Areas.Admin.ViewModels
         [Required, DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
-        public IList<TagCheckbox> Tags { get; set; } 
+        public IList<TagCheckbox> Tags { get; set; }
+    }
+
+
+    public class PostsShow
+    {
+        public Post Post { get; set; }
+    }
+
+    public class PostsTag
+    {
+        public Tag Tag { get; set; }
+        public PagedData<Post> Posts { get; set; } 
     }
 
 }

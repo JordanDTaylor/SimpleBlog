@@ -8,7 +8,7 @@ namespace SimpleBlog
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new TransactionFilter());
-            filters.Add(new HandleErrorAttribute());
+//            filters.Add(new HandleErrorAttribute());
         }
     }
 }

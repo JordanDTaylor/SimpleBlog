@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using NHibernate.Linq;
@@ -29,7 +28,7 @@ namespace SimpleBlog.Controllers
         {
             var user = Database.Session.Query<User>().FirstOrDefault(u => u.Username == form.Username);
             if(user == null)
-                SimpleBlog.Models.User.FakeHash();
+                Models.User.FakeHash();
 
             if (user == null || !user.CheckPassword(form.Password))
                 ModelState.AddModelError("Username", "Username of password is incorrect");
